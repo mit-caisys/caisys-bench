@@ -1,0 +1,20 @@
+.env
+__pycache__/
+target/
+
+# Deep Research
+deep_research/agent_log/
+deep_research/downloads/
+deep_research/raw_metric/
+
+# OpenEvolve
+openevolve/*/raw_metric/
+openevolve/*/artifacts/
+openevolve/*/src/openevolve_output/*/*/*
+!openevolve/*/src/openevolve_output/*/logs/*
+
+# RAG
+rag/dataset/*
+!rag/dataset/download.sh
+rag/log/
+rag/raw_metric/
