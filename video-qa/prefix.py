@@ -1,0 +1,4 @@
+RESULT_PREFIX = "result"
+BASELINE_PREFIX = "baseline"
+POISSON_LOG_PREFIX = "poisson"
+STATS_METRIC_PREFIX = "stats"

@@ -1,0 +1,60 @@
+{
+    "workflow": "self_rag",
+    "verbose": true,
+    "retriever": {
+        "embedding": {
+            "provider": "openai",
+            "model": "text-embedding-3-small"
+        },
+        "split": true,
+        "chunk_size": 2000,
+        "chunk_overlap": 200,
+        "search_type": "similarity",
+        "search_kwargs": {
+            "k": 5
+        }
+    },
+    "retrieval_grader": {
+        "provider": "huggingface",
+        "model": "google/gemma-3-27b-it",
+        "temperature": 0,
+        "stop": [
+            "<end_of_turn>"
+        ],
+        "skip": true
+    },
+    "generator": {
+        "provider": "huggingface",
+        "model": "google/gemma-3-27b-it",
+        "stop": [
+            "<end_of_turn>"
+        ],
+        "temperature": 0.2
+    },
+    "hallucination_grader": {
+        "provider": "huggingface",
+        "model": "google/gemma-3-27b-it",
+        "temperature": 0,
+        "stop": [
+            "<end_of_turn>"
+        ],
+        "skip": true
+    },
+    "answer_grader": {
+        "provider": "huggingface",
+        "model": "google/gemma-3-27b-it",
+        "temperature": 0,
+        "stop": [
+            "<end_of_turn>"
+        ],
+        "skip": true
+    },
+    "question_rewriter": {
+        "provider": "huggingface",
+        "model": "google/gemma-3-27b-it",
+        "temperature": 0.2,
+        "stop": [
+            "<end_of_turn>"
+        ]
+    }
+}

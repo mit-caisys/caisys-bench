@@ -1,0 +1,66 @@
+# Configuration for Rust Adaptive Sorting Evolution
+
+# General settings
+max_iterations: 100
+checkpoint_interval: 10
+log_level: "INFO"
+file_suffix: ".rs"
+
+# cores pinning
+# cores: "16-23"
+cores: "16-31"
+# cores: "16-47"
+
+# LLM configuration
+llm:
+  # Models for evolution
+  models:
+    - name: "google/gemma-3-27b-it"
+    # - name: "meta-llama/Llama-3.1-8B-Instruct"
+      weight: 1.0
+
+  # Models for LLM feedback
+  evaluator_models:
+    - name: "google/gemma-3-27b-it"
+    # - name: "meta-llama/Llama-3.1-8B-Instruct"
+      weight: 1.0
+
+  api_base: "http://localhost:8000/v1"
+  temperature: 0.7
+  max_tokens: 4096
+
+# Prompt configuration
+prompt:
+  # Custom system message for Rust performance programming
+  system_message: |
+    You are an expert Rust systems programmer specializing in high-performance algorithms.
+    Focus on creating adaptive sorting algorithms that can handle different data patterns efficiently.
+    Consider hybrid approaches like introsort, adaptive pivot selection, and data-aware optimizations.
+    Ensure memory safety and idiomatic Rust code. Use appropriate data structures and leverage Rust's zero-cost abstractions.
+
+  num_top_programs: 4
+  num_diverse_programs: 2
+  
+  # Include compilation errors and performance artifacts
+  include_artifacts: true 
+  max_artifact_bytes: 8192
+
+# Database configuration
+database:
+  population_size: 150
+  num_islands: 4
+  
+  # Feature dimensions for sorting algorithms
+  feature_dimensions:
+    - "combined_score"     # Overall performance score
+    - "performance_score"  # Speed performance
+    - "adaptability_score" # Adaptability to different data patterns
+  feature_bins: 8
+
+# Evaluator configuration
+evaluator:
+  timeout: 900  # Rust compilation can take time
+  parallel_evaluations: 3
+  
+  # Direct evaluation - evaluator doesn't implement cascade functions
+  cascade_evaluation: false
