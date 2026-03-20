@@ -1,0 +1,53 @@
+workflow: "self_rag"
+verbose: true
+
+cores: "16-31"
+
+documents:
+    collection_name: "wikilinks"
+    override: false 
+
+retriever: 
+    embedding: 
+        provider: "vllm"
+        model: "google/embeddinggemma-300m"
+    split: true
+    chunk_size: 1000
+    chunk_overlap: 100
+    search_type: "similarity"
+    search_kwargs: 
+        k: 10
+    increase_latency: true
+
+retrieval_grader:
+    provider: "vllm"
+    model: "google/gemma-3-27b-it"
+    temperature: 0
+    stop: ["<end_of_turn>"]
+    skip: true
+
+generator:
+    provider: "vllm"
+    model: "google/gemma-3-27b-it"
+    temperature: 0.2
+    stop: ["<end_of_turn>"]
+
+hallucination_grader:
+    provider: "vllm"
+    model: "google/gemma-3-27b-it"
+    temperature: 0
+    stop: ["<end_of_turn>"]
+    skip: true
+
+answer_grader:
+    provider: "vllm"
+    model: "google/gemma-3-27b-it"
+    temperature: 0
+    stop: ["<end_of_turn>"]
+    skip: true
+
+question_rewriter:
+    provider: "vllm"
+    model: "google/gemma-3-27b-it"
+    temperature: 0.2
+    stop: ["<end_of_turn>"]

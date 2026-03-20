@@ -1,0 +1,27 @@
+
+cores: "16-31"
+
+questions: 
+  - "From this image: https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg. What type of creature is shown, and what is its color?"
+  - "From this image: https://i0.wp.com/homeroomtravel.com/wp-content/uploads/2021/03/Gateway-Arch-9-e1614737214174.jpg. Transcribe all the text you see on the sign."
+  - "What is the result if you take the number of cats in https://png.pngtree.com/png-vector/20231223/ourmid/pngtree-bengal-cats-group-png-image_11207263.png and subtract it from the year MIT was established?"
+  - "Download this historical image: https://www.nps.gov/articles/images/109img1ch.jpg. Who are the people in this photo, and what was the exact duration and distance of the flight depicted here according to historical records?"
+  - "Analyze this image: https://www.guidester.com/wp-content/uploads/oia-416136_960_720.jpg. Based strictly on the architectural style and the flora in the image, determine the likely geographic region. Then, search the web to find the most popular tourist season for this specific town."
+  - "Find a recent (2025 or 2026) infographic or PNG chart regarding 'Global Electric Vehicle Market Share.' Download it, extract the percentage data for the top 3 manufacturers, and present it as a Markdown table."
+
+llm:
+  model: "hosted_vllm/google/gemma-3-27b-it"
+  api_base: "http://localhost:8000/v1"
+  max_completion_tokens: 8192
+  max_tokens: 1000  # For visualizer
+  temperature: 0.2
+
+  tool_calling_agent:
+    verbosity_level: 2
+    max_steps: 20
+    planning_interval: 4
+
+  code_agent:
+    max_steps: 12
+    verbosity_level: 2
+    planning_interval: 4
