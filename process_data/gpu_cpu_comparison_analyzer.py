@@ -12,7 +12,7 @@ import os
 import pandas as pd
 
 
-def analyze_system_metrics(directory_path, threshold):
+def analyze_gpu_cpu_comparison(directory_path, threshold):
     try:
         dcgmi_path = glob.glob(os.path.join(directory_path, "dcgmi-local-*.csv"))[0]
         sar_path = glob.glob(os.path.join(directory_path, "sar-cpu-*.csv"))[0]
@@ -74,4 +74,4 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    analyze_system_metrics(args.directory, args.threshold)
+    analyze_gpu_cpu_comparison(args.directory, args.threshold)

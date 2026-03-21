@@ -40,12 +40,15 @@ def get_date(log_filepath: Path):
     return date
 
 
-def load_sar_cpu_data(log_filepath: Path):
+def load_sar_cpu_data(log_filepath: Path, cpus_str: str | None = None):
     """
     Loads CPU utilization data from a sar log file.
 
     Args:
         log_filepath: The path to the sar CPU log file.
+        cpus_str (str | None): The list of cpus to process in range (-) and comma (,) format.
+            For example, "1-3,4,6,9-11" for cpus in [1, 2, 3, 4, 6, 9, 10, 11]
+            The default value is the suffix of the directory
 
     Returns:
         DataFrame with parsed CPU data including calculated total utilization.
@@ -99,8 +102,10 @@ def load_sar_cpu_data(log_filepath: Path):
     )
     df["time"] = pd.to_datetime(time_series, format="mixed")
 
-    # Filter by pinned CPU cores from directory name (e.g., "logs_0-7")
-    cpus_str = log_filepath.parent.name.split("_")[-1]
+    if cpus_str is None:
+        # Filter by pinned CPU cores from directory name (e.g., "logs_0-7")
+        cpus_str = log_filepath.parent.name.split("_")[-1]
+
     pattern = re.compile(r"^\d+(?:-\d+)?(?:,\d+(?:-\d+)?)*$")
     if bool(pattern.match(cpus_str)):
         # Parse CPU list (e.g., "0-3,5,7")
