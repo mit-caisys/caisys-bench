@@ -25,7 +25,7 @@ set_debug(False)
 
 log_dir = "data/logs"
 
-log_file = os.path.join(log_dir, "vide-app.log")
+log_file = os.path.join(log_dir, "vid-app.log")
 
 logging.basicConfig(
     filename=log_file,
@@ -152,7 +152,7 @@ def run_workflows(config: dict):
         video_paths = [
             f for f in os.listdir(config["inputs"]["video_mme_input"]["videos_path"])
         ]
-        video_ids = [os.path.splitext(path)[0] for path in video_paths][:1]
+        video_ids = [os.path.splitext(path)[0] for path in video_paths]
 
         video_inputs = []
 

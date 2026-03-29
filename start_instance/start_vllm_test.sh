@@ -47,7 +47,7 @@ fi
 
 VLLM_ARGS=()
 VLLM_ARGS+=(
-    --model "$MODEL"
+    "$MODEL"
     --tensor-parallel-size "$TENSOR_PARALLEL_SIZE"
     --max-num-seqs 1024
     --enable-auto-tool-choice
@@ -80,7 +80,7 @@ elif [[ "$MODEL" == *"meta-llama/Llama-3.1-8B-Instruct"* ]]; then
     VLLM_ARGS+=( --tool-call-parser llama3_json --chat-template examples/tool_chat_template_llama3.1_json.jinja )
 fi
 
-VLLM_IMAGE="vllm/vllm-openai:v0.16.0"
+VLLM_IMAGE="vllm/vllm-openai:v0.18.0"
 
 echo "----------------------------------------------------------------------"
 echo "Starting vLLM Container..."
