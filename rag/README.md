@@ -1,6 +1,9 @@
 # RAG Benchmark
 
 This repository provides a complete setup for running inference and plotting results on the [google/frames-benchmark](https://huggingface.co/datasets/google/frames-benchmark) dataset (with [wiki-links](https://code.google.com/archive/p/wiki-links/) as a large irrelevant dataset) using `vLLM` with Hugging Face models and OpenAI models.
+The workflow is similar to [Self-RAG](https://github.com/langchain-ai/langgraph/blob/main/examples/rag/langgraph_self_rag.ipynb). 
+You can choose whether to enable or disable each agent in your config file. 
+However, most analysis scripts do not currently support evaluating those agents.
 
 ---
 

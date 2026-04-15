@@ -23,6 +23,37 @@ This is an artifact of our ongoing project. A pre-print of our paper can be foun
 
 ---
 
+## Launching Experiment
+
+To run an experiment, navigate to the desired [workflow](#workflows) and complete the installation steps. Then, follow the instructions in the **Running the Project** section.
+
+---
+
+## Workflows
+
+### RAG
+
+An RAG workflow is designed to evaluate retrieval and question answering on the [frames](https://huggingface.co/datasets/google/frames-benchmark) benchmark dataset.
+The implementation uses [langgraph](https://github.com/langchain-ai/langgraph) library and is adapted from a [Self-RAG](https://github.com/langchain-ai/langgraph/blob/main/examples/rag/langgraph_self_rag.ipynb) example.
+
+For more details, see [rag](rag/README.md).
+
+### OpenEvolve
+
+An OpenEvolve workflow does iterative improvement on optimizing [circle packing](https://github.com/algorithmicsuperintelligence/openevolve/tree/main/examples/circle_packing) algorithms and [rust adaptive sorting](https://github.com/algorithmicsuperintelligence/openevolve/tree/main/examples/rust_adaptive_sort) algorithms.
+The implementation uses [openevolve](https://github.com/algorithmicsuperintelligence/openevolve) library and are adapted from [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve/main/examples) examples.
+
+For more details, see [openevolve](openevolve/README.md).
+
+### Deep Research
+
+A Deep Research workflow performs question answering by interacting with a web browser to gather information and respond to user queries.
+The implementation uses [smolagents](https://github.com/huggingface/smolagents) library and is adapted from [Open Deep Research](https://github.com/huggingface/smolagents/tree/main/examples/open_deep_research) example.
+
+For more details, see [deep_research](deep_research/README.md).
+
+---
+
 ## Contact
 
 If you have suggestions or improvements to this work, please feel free to open a pull-request.
