@@ -1,0 +1,38 @@
+{
+  "api_keys": {
+    "openai_api_key": "YOUR_OPENAI_API_KEY_HERE"
+  },
+  "model_config": {
+    "active_model": "vllm",
+    "openai": {
+      "model": "gpt-4o"
+    },
+    "vllm": {
+      "model": "google/gemma-3-27b-it",
+      "api_base": "http://localhost:8000/v1",
+      "temperature": 0.0,
+      "gpus": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "workflow_settings": {
+    "default_num_frames": 1,
+    "active_workflows": {
+      "images_from_urls": false,
+      "images_from_local": false,
+      "video_from_local": false,
+      "video_mme_dataset": true
+    }
+  },
+  "inputs": {
+    "video_mme_input": {
+      "videos_path": "data/videos/medium",
+      "dataset": "lmms-lab/Video-MME",
+      "transcription": true,
+      "poisson_load_gen": true,
+      "poisson_lambda": 0.4
+    }
+  }
+}

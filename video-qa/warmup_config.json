@@ -1,0 +1,50 @@
+{
+    "api_keys": {
+      "openai_api_key": "YOUR_OPENAI_API_KEY_HERE"
+    },
+    "model_config": {
+      "active_model": "vllm",
+      "openai": {
+        "model": "gpt-4o"
+      },
+      "vllm": {
+        "model": "google/gemma-3-27b-it",
+        "api_base": "http://localhost:8000/v1",
+        "temperature": 0.0
+      }
+    },
+    "workflow_settings": {
+      "default_num_frames": 1,
+      "active_workflows": {
+        "images_from_urls": false,
+        "images_from_local": false,
+        "video_from_local": false,
+        "video_mme_dataset": true
+      }
+    },
+    "inputs": {
+      "image_url_input": {
+        "image_urls": [
+          "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/05/28/15/Deep-sea.jpg?width=1200&height=800&crop=1200:800",
+          "https://c02.purpledshub.com/uploads/sites/62/2021/09/Silhouetted-elephants.-Chris-Packham.-Remembering-Elephants-da11c3e.jpg?w=1029&webp=1"
+        ],
+        "question": "What are the main subjects of these two images? Describe each one."
+      },
+      "local_image_input": {
+        "image_paths": [
+          "video-qa/data/wildlife-moose.jpg",
+          "video-qa/data/8Kenyawildlife.jpg.webp"
+        ],
+        "question": "Create a fictional story that involves the subjects of these images."
+      },
+      "local_video_input": {
+        "video_path": "video-qa/data/videos/1q-5IIyZL20.mp4",
+        "question": "Based on these frames, what do you think the video is about?"
+      },
+      "video_mme_input": {
+        "videos_path": "data/videos",
+        "dataset": "lmms-lab/Video-MME",
+        "transcription": true
+      }
+    }
+  }
