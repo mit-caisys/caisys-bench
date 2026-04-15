@@ -146,7 +146,7 @@ def process_dcgmi_to_csv(dcgmi_dir: Path, processed_dir: Path, entities: list = 
         json_path = target_dir / f"{base_name}_summary.json"
 
         # Load and optionally filter by GPU entity
-        df = load_data_dcgmi(dcgmi_dir / file_path, entities)
+        df = load_data_dcgmi(dcgmi_dir / file_path)
         if entities:
             df = df[df[ENTITY].isin(entities)]
 
